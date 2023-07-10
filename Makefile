@@ -53,12 +53,15 @@ $(NAME): $(OBJS) $(LIBOBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBOBJS)
 
 $(OBJS): $(SRCS) $(LIBSRCS)
+	rm -rf $(OBJDIR)
+	mkdir $(OBJDIR)
 	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS) $(LIBSRCS)
 	mv $(OBJ) $(LIBOBJ) $(OBJDIR) 
 
 clean:
 	rm -rf $(OBJS) $(LIBOBJS)
 	rm -rf $(OBJ) $(LIBOBJ)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -rf $(NAME)
